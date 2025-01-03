@@ -22,22 +22,28 @@
             color: hsl(228, 45%, 44%);
         }
         
+        .center {
+            margin: auto;
+            max-width: 680px;
+            max-height: 600px;
+            border: 2px solid #2c7fb8;
+            padding: 25px;
+            box-shadow: 5px 10px 8px #888888;
+            border-radius: 35px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 15px;
+        }
+        
         .row {
+            display: flex;
+        }
+        
+        .inputRow {
             display: flex;
         }
         
         .column {
             flex: 50%;
-        }
-        
-        .center {
-            margin: auto;
-            max-width: 680px;
-            border: 2px solid #2c7fb8;
-            /* background-color: #2c7fb8; */
-            padding: 15px;
-            box-shadow: 5px 10px 8px #888888;
-            border-radius: 35px;
         }
         
         .headerID {
@@ -53,6 +59,19 @@
             color: #2c7fb8;
         }
         
+        #introID {
+            display: flex;
+            justify-content: center;
+            margin: 10px auto;
+            text-align: center;
+            max-width: 350px;
+            word-wrap: normal;
+            font-family: Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 25px;
+            color: white;
+        }
+        
         #labelID {
             display: flex;
             justify-content: center;
@@ -64,39 +83,78 @@
             font-size: 15px;
             color: grey;
         }
+        
+        #resultsColID {
+            background-color: #081d58;
+            border-radius: 10px 35px;
+            margin-left: 10px;
+            /* todo assign specific corners*/
+        }
+        
+        #amountInput {
+            margin-left: 5px;
+        }
+        
+        #termInput {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        
+        #rateInput {
+            margin-left: 5px;
+        }
     </style>
 </head>
 
 <body>
-
     <div class="center">
         <div class="row">
             <div class="column">
-                <p class="headerID">Mortgage Calculator</p>
+
+                <div class="row">
+                    <p class="headerID">Mortgage Calculator</p>
+                    <button>Clear All</button>
+                </div>
+                <br>
+                <label for="amountInput">Mortgage Amount</label><br>
+                <input id="amountInput" type="text"></input>
+                <br>
+                <br>
+                <div class="inputRow">
+                    <label for="termInput">Mortgage Term</label><br>
+                    <input id="termInput" type="text"></input>
+                    <label for="rateInput">Interest Rate</label><br>
+                    <input id="rateInput" type="text"></input>
+                </div>
+                <br>
+
+                <p>Mortgage Type</p>
+                <input type="radio" id="repayInput" value="Repayment">
+                <label for="repayInput">Repayment</label><br>
+                <input type="radio" id="interestInput" value="Interest Only">
+                <label for="interestInput">Interest Only</label>
+                <br>
+                <br>
+
+                <button>Calculate Repayments</button>
+                <br>
+
             </div>
-            <div class="column">
+            <div class="column" id="resultsColID">
                 <p class="headerID">Your results</p>
+                <small>Your results are shown below based on the information you provided. To adjust the results, edit the form and click “calculate repayments” again. Your monthly repayments Total you'll repay over the term</small>
+                <p id="introID">Results shown here </p>
+                <p id="labelID">Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p>
+
             </div>
         </div>
 
-        <!-- <img id="qrcodeID" src="images/wenhao-ins-qr-code.png"></img> -->
 
-        <p id="introID">Results shown here </p>
-
-        <p id="labelID">Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p>
 
     </div>
-    Clear All Mortgage Amount Mortgage Term Interest Rate Mortgage Type Repayment Interest Only Calculate Repayments
 
-    <!-- Empty results start -->
 
-    <!-- Empty results end -->
 
-    <!-- Completed results start -->
-
-    Your results are shown below based on the information you provided. To adjust the results, edit the form and click “calculate repayments” again. Your monthly repayments Total you'll repay over the term
-
-    <!-- Completed results end -->
 
     <div class="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. Coded by <a href="#">Wenhao Wu</a>.
