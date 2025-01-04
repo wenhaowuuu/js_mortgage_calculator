@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../js_qr_code_component"
+		},
+		{
+			"path": "../../Zoox/js_calculator"
 		}
 	]
 }
