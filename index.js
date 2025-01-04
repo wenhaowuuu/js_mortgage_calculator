@@ -4,16 +4,25 @@
 // addEventListener for the calculate button click
 
 //Solution 1 - try window global property first
-//Solution 2 - then try wrap around a calculator class
+
 var mortAmount;
 var interestRate;
 var mortTerm;
+var mortType;
 
 document.getElementById("amountInput").addEventListener("change", function(e) {
 
     if (parseInt(e.target.value) > 0) {
         mortAmount = parseInt(e.target.value);
         console.log("mortgage amount: ", mortAmount);
+    }
+});
+
+document.getElementById("termInput").addEventListener("change", function(e) {
+
+    if (parseInt(e.target.value) > 0) {
+        mortTerm = parseInt(e.target.value);
+        console.log("mortgage term: ", mortTerm);
     }
 });
 
@@ -24,3 +33,32 @@ document.getElementById("rateInput").addEventListener("change", function(e) {
         console.log("interest rate: ", interestRate);
     }
 });
+
+
+var repayOption = document.getElementById("repayInput");
+var interestOption = document.getElementById("interestInput");
+
+repayOption.addEventListener("change", function(e) {
+
+    if (repayOption.checked) {
+        mortType = repayOption.value;
+        console.log("mortgage type: ", mortType);
+    }
+    // else {
+    //     interestOption.checked = true;
+    // }
+});
+
+
+interestOption.addEventListener("change", function(e) {
+
+    if (interestOption.checked) {
+        mortType = interestOption.value;
+        console.log("mortgage type: ", mortType);
+    }
+
+});
+
+
+
+//Solution 2 - then try wrap around a calculator class
