@@ -7,21 +7,25 @@
 
 var mortAmount;
 var interestRate;
+var monthlyRate;
 var mortTerm;
 var mortType;
 
+var monthlyPay;
+var totalPay;
+
 document.getElementById("amountInput").addEventListener("change", function(e) {
 
-    if (parseInt(e.target.value) > 0) {
-        mortAmount = parseInt(e.target.value);
+    if (parseFloat(e.target.value) > 0) {
+        mortAmount = parseFloat(e.target.value);
         console.log("mortgage amount: ", mortAmount);
     }
 });
 
 document.getElementById("termInput").addEventListener("change", function(e) {
 
-    if (parseInt(e.target.value) > 0) {
-        mortTerm = parseInt(e.target.value);
+    if (parseFloat(e.target.value) > 0) {
+        mortTerm = parseFloat(e.target.value);
         console.log("mortgage term: ", mortTerm);
     }
 });
@@ -29,8 +33,10 @@ document.getElementById("termInput").addEventListener("change", function(e) {
 document.getElementById("rateInput").addEventListener("change", function(e) {
 
     if (parseFloat(e.target.value) > 0) {
-        interestRate = parseFloat(e.target.value);
+        interestRate = parseFloat(e.target.value) / 100;
+        monthlyRate = interestRate / 12;
         console.log("interest rate: ", interestRate);
+        console.log("monthly rate: ", monthlyRate);
     }
 });
 
@@ -44,9 +50,7 @@ repayOption.addEventListener("change", function(e) {
         mortType = repayOption.value;
         console.log("mortgage type: ", mortType);
     }
-    // else {
-    //     interestOption.checked = true;
-    // }
+
 });
 
 
@@ -59,6 +63,30 @@ interestOption.addEventListener("change", function(e) {
 
 });
 
+var calculateButton = document.getElementById("calculateButton");
+
+calculateButton.addEventListener("click", function() {
+    console.log("calculate!");
+
+    if (!mortAmount ||
+        !interestRate || !mortTerm || !mortType) {
+        alert("invalid input! Please check.");
+    } else {
+        monthlyPay = mortAmount *
+            ((
+                monthlyRate * (1 + monthlyRate) ** (mortTerm * 12)) / ((1 + monthlyRate) ** (mortTerm * 12) - 1));
+
+        totalPay = monthlyPay * mortTerm * 12;
+
+        console.log("monthly payment: ", monthlyPay.toFixed(2));
+        console.log("total payment: ", totalPay.toFixed(2));
+
+        document.getElementById("monthlyPayText").innerText = "$" + String(monthlyPay.toFixed(2));
+
+        document.getElementById("totalPayText").innerText = "$" + String(totalPay.toFixed(2));
+    }
+
+})
 
 
 //Solution 2 - then try wrap around a calculator class
