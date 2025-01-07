@@ -14,7 +14,9 @@ var mortType;
 var monthlyPay;
 var totalPay;
 
-document.getElementById("amountInput").addEventListener("change", function(e) {
+var amountInput = document.getElementById("amountInput");
+
+amountInput.addEventListener("change", function(e) {
 
     if (parseFloat(e.target.value) > 0) {
         mortAmount = parseFloat(e.target.value);
@@ -88,5 +90,18 @@ calculateButton.addEventListener("click", function() {
 
 })
 
+var clearButton = document.getElementById("clearButtonID");
+
+clearButton.addEventListener("click", function() {
+    console.log("clear all!");
+
+    if (amountInput) {
+        amountInput.value = null;
+        mortAmount = null;
+        console.log("reset amount input", mortAmount);
+    }
+
+
+})
 
 //Solution 2 - then try wrap around a calculator class

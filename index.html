@@ -87,8 +87,10 @@
         #resultsColID {
             background-color: #081d58;
             border-radius: 10px 35px;
-            margin-left: 10px;
+            margin-left: 20px;
+            padding: 8px;
             /* todo assign specific corners*/
+            color: lightgray;
         }
         
         #amountInput {
@@ -103,6 +105,18 @@
         #rateInput {
             margin-left: 5px;
         }
+        
+        #monthlyPayText {
+            color: yellow;
+            font-family: bold;
+            font-size: 25px;
+        }
+        
+        #totalPayText {
+            color: white;
+            font-family: bold;
+            font-size: 15px;
+        }
     </style>
 </head>
 
@@ -113,7 +127,7 @@
 
                 <div class="row">
                     <p class="headerID">Mortgage Calculator</p>
-                    <button>Clear All</button>
+                    <button id="clearButtonID">Clear All</button>
                 </div>
                 <br>
                 <label for="amountInput">Mortgage Amount</label><br>
@@ -121,9 +135,14 @@
                 <br>
                 <br>
                 <div class="inputRow">
-                    <label for="termInput">Mortgage Term</label><br>
+                    <label for="termInput">Mortgage Term (yr)</label><br>
+
+                    <label for="rateInput" style="margin-left: 30px;">Interest Rate (%)</label><br>
+
+                </div>
+                <div class="inputRow">
                     <input id="termInput" type="text"></input>
-                    <label for="rateInput">Interest Rate</label><br>
+
                     <input id="rateInput" type="text"></input>
                 </div>
                 <br>
@@ -141,15 +160,27 @@
 
             </div>
             <div class="column" id="resultsColID">
-                <p class="headerID">Your results</p>
-                <small>Your results are shown below based on the information you provided. To adjust the results, edit the form and click “calculate repayments” again. Your monthly repayments
-                    <b id="monthlyPayText"></b> 
-                    
-                    Total you'll repay over the term
+                <h3 class="headerID">Your results</h3>
+                <small>Your results are shown below based on the information you provided. To adjust the results, edit the form and click “calculate repayments” again. </small>
+                <br>
+                </br>
+                <div>
+                    <small>Your monthly repayments</small>
+                    <br>
+                    <b id="monthlyPayText"></b>
+                </div>
+                <hr></hr>
+
+                <br>
+                <div>
+                    <small>Total you'll repay over the term</small>
+                    <br>
                     <b id="totalPayText"></b>
-                </small>
-                <p id="introID">Results shown here </p>
-                <p id="labelID">Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p>
+                </div>
+
+
+                <!-- <p id="introID">Results shown here </p>
+                <p id="labelID">Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p> -->
 
             </div>
         </div>
