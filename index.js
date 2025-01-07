@@ -15,6 +15,13 @@ var monthlyPay;
 var totalPay;
 
 var amountInput = document.getElementById("amountInput");
+var termInput = document.getElementById("termInput");
+var rateInput = document.getElementById("rateInput");
+var repayOption = document.getElementById("repayInput");
+var interestOption = document.getElementById("interestInput");
+
+var monthlyPayText = document.getElementById("monthlyPayText");
+var totalPayText = document.getElementById("totalPayText");
 
 amountInput.addEventListener("change", function(e) {
 
@@ -24,7 +31,7 @@ amountInput.addEventListener("change", function(e) {
     }
 });
 
-document.getElementById("termInput").addEventListener("change", function(e) {
+termInput.addEventListener("change", function(e) {
 
     if (parseFloat(e.target.value) > 0) {
         mortTerm = parseFloat(e.target.value);
@@ -32,7 +39,7 @@ document.getElementById("termInput").addEventListener("change", function(e) {
     }
 });
 
-document.getElementById("rateInput").addEventListener("change", function(e) {
+rateInput.addEventListener("change", function(e) {
 
     if (parseFloat(e.target.value) > 0) {
         interestRate = parseFloat(e.target.value) / 100;
@@ -42,9 +49,6 @@ document.getElementById("rateInput").addEventListener("change", function(e) {
     }
 });
 
-
-var repayOption = document.getElementById("repayInput");
-var interestOption = document.getElementById("interestInput");
 
 repayOption.addEventListener("change", function(e) {
 
@@ -83,9 +87,8 @@ calculateButton.addEventListener("click", function() {
         console.log("monthly payment: ", monthlyPay.toFixed(2));
         console.log("total payment: ", totalPay.toFixed(2));
 
-        document.getElementById("monthlyPayText").innerText = "$" + String(monthlyPay.toFixed(2));
-
-        document.getElementById("totalPayText").innerText = "$" + String(totalPay.toFixed(2));
+        monthlyPayText.innerText = "$" + String(monthlyPay.toFixed(2));
+        totalPayText.innerText = "$" + String(totalPay.toFixed(2));
     }
 
 })
@@ -95,9 +98,25 @@ var clearButton = document.getElementById("clearButtonID");
 clearButton.addEventListener("click", function() {
     console.log("clear all!");
 
-    if (amountInput) {
+    if (amountInput || termInput || rateInput || repayOption || interestOption) {
         amountInput.value = null;
+        termInput.value = null;
+        rateInput.value = null;
+        repayOption.checked = false;
+        interestOption.checked = false;
+
         mortAmount = null;
+        mortTerm = null;
+        interestRate = null;
+        monthlyRate = null;
+        mortType = null;
+
+        monthlyPay = null;
+        totalPay = null;
+
+        monthlyPayText.innerText = null;
+        totalPayText.innerText = null;
+
         console.log("reset amount input", mortAmount);
     }
 
