@@ -23,6 +23,9 @@ var interestOption = document.getElementById("interestInput");
 var monthlyPayText = document.getElementById("monthlyPayText");
 var totalPayText = document.getElementById("totalPayText");
 
+var noResultsDiv = document.getElementById("noResultsID");
+var activeResultsDiv = document.getElementById("activeResultsID");
+
 amountInput.addEventListener("change", function(e) {
 
     if (parseFloat(e.target.value) > 0) {
@@ -78,17 +81,30 @@ calculateButton.addEventListener("click", function() {
         !interestRate || !mortTerm || !mortType) {
         alert("invalid input! Please check.");
     } else {
-        monthlyPay = mortAmount *
-            ((
-                monthlyRate * (1 + monthlyRate) ** (mortTerm * 12)) / ((1 + monthlyRate) ** (mortTerm * 12) - 1));
+        if (mortType == "Repayment") {
+            monthlyPay = mortAmount *
+                ((
+                    monthlyRate * (1 + monthlyRate) ** (mortTerm * 12)) / ((1 + monthlyRate) ** (mortTerm * 12) - 1));
 
-        totalPay = monthlyPay * mortTerm * 12;
+            totalPay = monthlyPay * mortTerm * 12;
+        } else {
+            //the interest only scenario
+            monthlyPay = mortAmount * monthlyRate;
+
+            totalPay = monthlyPay * mortTerm * 12;
+
+        }
+
 
         console.log("monthly payment: ", monthlyPay.toFixed(2));
         console.log("total payment: ", totalPay.toFixed(2));
 
         monthlyPayText.innerText = "$" + String(monthlyPay.toFixed(2));
         totalPayText.innerText = "$" + String(totalPay.toFixed(2));
+
+        activeResultsDiv.style.display = "block";
+        noResultsDiv.style.display = "none";
+
     }
 
 })
@@ -119,6 +135,9 @@ clearButton.addEventListener("click", function() {
 
         console.log("reset amount input", mortAmount);
     }
+
+    activeResultsDiv.style.display = "none";
+    noResultsDiv.style.display = "block";
 
 
 })

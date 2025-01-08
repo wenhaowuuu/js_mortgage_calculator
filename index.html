@@ -57,7 +57,7 @@
             font-family: Helvetica, sans-serif;
             font-weight: bold;
             font-size: 20px;
-            color: #2c7fb8;
+            color: #133142;
         }
         
         #clearButtonID {
@@ -74,7 +74,7 @@
         #calculateButton {
             cursor: pointer;
             border-radius: 3px;
-            background-color: lightgreen;
+            background-color: #d9db30;
             max-height: 30px;
         }
         
@@ -104,7 +104,7 @@
         }
         
         #resultsColID {
-            background-color: #081d58;
+            background-color: #133040;
             border-radius: 10px 35px;
             margin-left: 20px;
             padding: 8px;
@@ -179,27 +179,33 @@
 
             </div>
             <div class="column" id="resultsColID">
-                <h3 class="headerID">Your results</h3>
-                <small>Your results are shown below based on the information you provided. To adjust the results, edit the form and click “calculate repayments” again. </small>
-                <br>
-                </br>
-                <div>
-                    <small>Your monthly repayments</small>
-                    <br>
-                    <b id="monthlyPayText"></b>
+                <div id="noResultsID">
+                    <h3 class="headerID" style="color:white">Results shown here</h3>
+                    <small style="color:#7b97ac">Complete the form and click “calculate repayments” to see what your monthly repayments would be.</small>
                 </div>
-                <hr></hr>
-
-                <br>
-                <div>
-                    <small>Total you'll repay over the term</small>
+                <div id="activeResultsID" style="display:none">
+                    <h3 class="headerID" style="color:white">Your results</h3>
+                    <small style="color:#7b97ac">Your results are shown below based on the information you provided. To adjust the results, edit the form and click “calculate repayments” again. </small>
                     <br>
-                    <b id="totalPayText"></b>
+                    </br>
+                    <div>
+                        <small>Your monthly repayments</small>
+                        <br>
+                        <b id="monthlyPayText"></b>
+                    </div>
+                    <hr></hr>
+
+                    <br>
+                    <div>
+                        <small>Total you'll repay over the term</small>
+                        <br>
+                        <b id="totalPayText"></b>
+                    </div>
+
+
+
                 </div>
 
-
-                <!-- <p id="introID">Results shown here </p>
-                <p id="labelID">Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p> -->
 
             </div>
         </div>
